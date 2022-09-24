@@ -1,6 +1,5 @@
 import React from "react";
 import Players from "./components/Players";
-import { DataService } from "./services/data.service";
 
 function App() {
   // const players = DataService.getPlayers();
