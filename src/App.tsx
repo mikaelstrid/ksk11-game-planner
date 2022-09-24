@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import { DataService } from "./services/data.service";
 
 function App() {
+  // const [schedule, setSchedule] = useState<ISchedule>();
+
+  // useEffect(() => {
+  //   DataService.loadSchedule();
+  //   setSchedule(DataService.loadSchedule());
+  // }, []);
+
+  // const teams = DataService.getTeams();
+  // DataService.registerUpdateCallback(() => {
+  //   setSchedule(DataService.loadSchedule());
+  // });
+
   return (
-    <h1>Hello world!</h1>
+    <div>Hello world!</div>
   );
 }
 
