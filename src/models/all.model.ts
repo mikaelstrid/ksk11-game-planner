@@ -5,6 +5,7 @@ export interface ITeam {
 
 export interface IPlayer {
   id: number;
+  number: number;
   name: string;
 }
 
