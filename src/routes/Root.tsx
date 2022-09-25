@@ -1,11 +1,12 @@
 import React from "react";
+import { Container } from "reactstrap";
 import { Outlet } from "react-router-dom";
 
 function Root() {
   return (
-    <div className="container">
+    <Container>
       <Outlet />
-    </div>
+    </Container>
   );
 }
 

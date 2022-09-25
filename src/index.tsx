@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import Games from "./routes/Games";
 import Root from "./routes/Root";
+import Game from "./routes/Game";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,12 @@ const router = createBrowserRouter([
       {
         path: "/games",
         element: <Games />,
+        children: [
+          {
+            path: ":id",
+            element: <Game />,
+          },
+        ],
       },
     ],
   },

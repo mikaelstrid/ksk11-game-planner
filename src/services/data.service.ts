@@ -61,6 +61,12 @@ export class DataService {
           opponent: { id: 1, name: "Stenungsund Stingers" },
           home: true,
         },
+        {
+          id: 2,
+          datetime: new Date(),
+          opponent: { id: 2, name: "Lerum BK" },
+          home: true,
+        },
       ],
     };
   }

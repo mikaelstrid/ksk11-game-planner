@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Link, Outlet } from "react-router-dom";
+import { Row, Col } from "reactstrap";
 import { IActivities } from "../models/all.model";
 import { DataService } from "../services/data.service";
 
@@ -13,23 +15,25 @@ function Games() {
 
   return (
     <>
-      <h2>Matcher</h2>
-      <table className="table table-bordered">
-        <thead>
-          <tr>
-            <th>Datum</th>
-            <th>Motståndare</th>
-          </tr>
-        </thead>
-        <tbody>
-          {activities.games.map((game) => (
-            <tr key={game.id}>
-              <td>{game.datetime.toDateString()}</td>
-              <td>{game.opponent.name}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <h1>Matcher</h1>
+      <Row>
+        <Col md="3">
+          <ul>
+            {activities.games.map((game) => (
+              <li key={game.id}>
+                <Link to={`${game.id}`}>
+                  {`${game.datetime.toLocaleDateString("sv")} ${
+                    game.opponent.name
+                  }`}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Col>
+        <Col md="9">
+          <Outlet />
+        </Col>
+      </Row>
     </>
   );
 }
