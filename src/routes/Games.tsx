@@ -15,16 +15,15 @@ function Games() {
 
   return (
     <>
-      <h1>Matcher</h1>
       <Row>
         <Col md="3">
-          <ul>
+          <ul className="list-unstyled">
             {activities.games.map((game) => (
               <li key={game.id}>
                 <Link to={`${game.id}`}>
-                  {`${game.datetime.toLocaleDateString("sv")} ${
-                    game.opponent.name
-                  }`}
+                  <div className="my-2">{`${game.datetime.toLocaleDateString(
+                    "sv"
+                  )} ${game.opponent.name}`}</div>
                 </Link>
               </li>
             ))}

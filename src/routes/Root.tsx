@@ -1,13 +1,6 @@
 import React from "react";
-import {
-  Container,
-  Nav,
-  Navbar,
-  NavbarBrand,
-  NavItem,
-  NavLink,
-} from "reactstrap";
-import { Outlet } from "react-router-dom";
+import { Container, Nav, Navbar, NavbarBrand, NavItem } from "reactstrap";
+import { Link, Outlet } from "react-router-dom";
 
 function Root() {
   return (
@@ -16,14 +9,18 @@ function Root() {
         <NavbarBrand href="/">KSK Team 11 Game Planner</NavbarBrand>
         <Nav>
           <NavItem>
-            <NavLink href="/players">Spelare</NavLink>
+            <Link to={`/players`} className="nav-link">
+              Spelare
+            </Link>
           </NavItem>
           <NavItem>
-            <NavLink href="/games">Matcher</NavLink>
+            <Link to={`/games`} className="nav-link">
+              Matcher
+            </Link>
           </NavItem>
         </Nav>
       </Navbar>
-      <Container>
+      <Container fluid>
         <Outlet />
       </Container>
       <div className="container">
