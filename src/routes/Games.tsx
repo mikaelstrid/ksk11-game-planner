@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { IActivities, IGame } from "../models/all.model";
+import { IActivities } from "../models/all.model";
 import { DataService } from "../services/data.service";
 
 function Games() {
