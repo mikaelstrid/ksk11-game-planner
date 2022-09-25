@@ -1,4 +1,4 @@
-import { IPlayer } from "../models/all.model";
+import { IActivities, IPlayer } from "../models/all.model";
 
 export class DataService {
   //   private static callbackFn: () => void;
@@ -35,21 +35,33 @@ export class DataService {
   //     if (DataService.callbackFn) DataService.callbackFn();
   //   }
 
-  //   public static loadSchedule(): ISchedule {
-  //     try {
-  //       const temp = localStorage.getItem("kit.schedule");
-  //       if (!temp) {
-  //         console.log("No data found");
-  //         return this.createEmptySchedule();
-  //       }
-  //       return JSON.parse(temp);
-  //     } catch {
-  //       console.log("Could not load schedule");
-  //       return this.createEmptySchedule();
-  //     }
-  //   }
+  public static loadActivities(): IActivities {
+    try {
+      const temp = localStorage.getItem("ksk11-game-planner.activities");
+      if (!temp) {
+        return this.createEmptyActivities();
+      }
+      return JSON.parse(temp);
+    } catch {
+      console.log("Could not load schedule");
+      return this.createEmptyActivities();
+    }
+  }
 
   //   public static saveSchedule(schedule: ISchedule): void {
   //     localStorage.setItem("kit.schedule", JSON.stringify(schedule));
   //   }
+
+  private static createEmptyActivities(): IActivities {
+    return {
+      games: [
+        {
+          id: 1,
+          datetime: new Date(),
+          opponent: { id: 1, name: "Stenungsund Stingers" },
+          home: true,
+        },
+      ],
+    };
+  }
 }

@@ -15,3 +15,7 @@ export interface IGame {
   opponent: ITeam;
   home: boolean;
 }
+
+export interface IActivities {
+  games: IGame[];
+}
