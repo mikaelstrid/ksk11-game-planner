@@ -14,8 +14,10 @@ export interface IGame {
   date: string;
   opponentId: number;
   isHomeGame: boolean;
+  roosters: IRooster[];
 }
 
-export interface IActivities {
-  games: IGame[];
+export interface IRooster {
+  id: number;
+  players: number[];
 }

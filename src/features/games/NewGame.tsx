@@ -12,7 +12,8 @@ function NewGame() {
   const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
   const [isHomeGame, setIsHomeGame] = useState(true);
 
-  const onSaveClicked = () => {
+  const onSaveClicked = (e: React.SyntheticEvent) => {
+    e.preventDefault();
     if (opponentId !== -1 && date) {
       dispatch(
         add({
@@ -20,6 +21,7 @@ function NewGame() {
           date: date,
           opponentId,
           isHomeGame,
+          roosters: [],
         })
       );
       setOpponentId(-1);
@@ -31,13 +33,13 @@ function NewGame() {
     <div>
       <section>
         <h2>Ny match</h2>
-        <Form>
+        <Form onSubmit={onSaveClicked}>
           <FormGroup>
             <Label for="opponent">Motståndare</Label>
             <TeamSelector
               id="opponent"
-              selectedValue={opponentId}
-              handleSelectedValueChanged={setOpponentId}
+              value={opponentId}
+              onChange={setOpponentId}
             />
           </FormGroup>
           <FormGroup>
@@ -61,7 +63,7 @@ function NewGame() {
             />{" "}
             <Label check>Hemmamatch</Label>
           </FormGroup>
-          <Button type="button" color="primary" onClick={onSaveClicked}>
+          <Button type="submit" color="primary">
             Spara
           </Button>
         </Form>

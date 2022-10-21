@@ -5,20 +5,20 @@ import { selectTeams } from "./teamsSlice";
 
 function TeamSelector({
   id,
-  selectedValue,
-  handleSelectedValueChanged,
+  value,
+  onChange,
 }: {
   id: string;
-  selectedValue: number | undefined;
-  handleSelectedValueChanged: (value: number) => void;
+  value: number | undefined;
+  onChange: (value: number) => void;
 }) {
   const teams = useAppSelector(selectTeams);
   return (
     <Input
-      id="{id}"
+      id={id}
       type="select"
-      defaultValue={selectedValue}
-      onChange={(e) => handleSelectedValueChanged(parseInt(e.target.value))}
+      value={value}
+      onChange={(e) => onChange(parseInt(e.target.value))}
     >
       <option value={-1}>- Välj lag -</option>
       {teams.map((team) => (
