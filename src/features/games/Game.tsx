@@ -27,12 +27,8 @@ function Game() {
       <div>
         <h3>Laguppställningar</h3>
         {game.roosters.map((rooster, index) => (
-          <div className="mb-3">
-            <Rooster
-              key={rooster.id}
-              gameId={game.id}
-              rooster={rooster}
-            ></Rooster>
+          <div key={rooster.id} className="mb-3">
+            <Rooster gameId={game.id} rooster={rooster}></Rooster>
           </div>
         ))}
         <Button

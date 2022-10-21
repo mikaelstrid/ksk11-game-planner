@@ -43,8 +43,11 @@ export const gamesSlice = createSlice({
       if (game) {
         game.roosters.push({
           id:
-            game?.roosters.map((r) => r.id).reduce((a, b) => Math.max(a, b)) +
-            1,
+            game.roosters.length === 0
+              ? 1
+              : game?.roosters
+                  .map((r) => r.id)
+                  .reduce((a, b) => Math.max(a, b)) + 1,
           players: [],
         });
       }
