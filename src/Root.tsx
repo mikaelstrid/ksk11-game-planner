@@ -14,6 +14,11 @@ function Root() {
             </Link>
           </NavItem>
           <NavItem>
+            <Link to={`/teams`} className="nav-link">
+              Lag
+            </Link>
+          </NavItem>
+          <NavItem>
             <Link to={`/games`} className="nav-link">
               Matcher
             </Link>

@@ -11,9 +11,9 @@ export interface IPlayer {
 
 export interface IGame {
   id: number;
-  datetime: Date;
-  opponent: ITeam;
-  home: boolean;
+  date: string;
+  opponentId: number;
+  isHomeGame: boolean;
 }
 
 export interface IActivities {
