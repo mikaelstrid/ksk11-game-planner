@@ -1,23 +1,23 @@
 export interface ITeam {
-  id: number;
+  id: string;
   name: string;
 }
 
 export interface IPlayer {
-  id: number;
+  id: string;
   number: number;
   name: string;
 }
 
 export interface IGame {
-  id: number;
+  id: string;
   date: string;
-  opponentId: number;
+  opponentId: string;
   isHomeGame: boolean;
   roosters: IRooster[];
 }
 
 export interface IRooster {
-  id: number;
-  players: number[];
+  id: string;
+  players: string[];
 }

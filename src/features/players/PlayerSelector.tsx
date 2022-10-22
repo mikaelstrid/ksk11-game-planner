@@ -10,9 +10,9 @@ function PlayerSelector({
   onChange,
 }: {
   id: string;
-  value: number | undefined;
-  exludePlayerIds?: number[];
-  onChange: (value: number) => void;
+  value: string | undefined;
+  exludePlayerIds?: string[];
+  onChange: (value: string) => void;
 }) {
   const players = useAppSelector(selectPlayers);
   return (
@@ -20,7 +20,7 @@ function PlayerSelector({
       id={id}
       type="select"
       value={value}
-      onChange={(e) => onChange(parseInt(e.target.value))}
+      onChange={(e) => onChange(e.target.value)}
     >
       <option value={-1}>- Välj spelare -</option>
       {players

@@ -1,30 +1,30 @@
+import { nanoid } from "@reduxjs/toolkit";
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useAppDispatch } from "../../app/hooks";
 import TeamSelector from "../teams/TeamSelector";
-import { add, selectNextGameId } from "./gamesSlice";
+import { add } from "./gamesSlice";
 
 function NewGame() {
   const dispatch = useAppDispatch();
-  const nextTeamId = useAppSelector(selectNextGameId);
 
-  const [opponentId, setOpponentId] = useState(-1);
+  const [opponentId, setOpponentId] = useState("-1");
   const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
   const [isHomeGame, setIsHomeGame] = useState(true);
 
   const onSaveClicked = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    if (opponentId !== -1 && date) {
+    if (opponentId !== "-1" && date) {
       dispatch(
         add({
-          id: nextTeamId,
+          id: nanoid(),
           date: date,
           opponentId,
           isHomeGame,
           roosters: [],
         })
       );
-      setOpponentId(-1);
+      setOpponentId("-1");
       setIsHomeGame(true);
     }
   };

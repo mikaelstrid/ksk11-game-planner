@@ -1,12 +1,12 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import { ITeam } from "../../models/all.model";
 
 export type TeamsState = ITeam[];
 
 const initialState: TeamsState = [
-  { id: 1, name: "Stenungsund Stingers" },
-  { id: 2, name: "Lerum BK" },
+  { id: nanoid(), name: "Stenungsund Stingers" },
+  { id: nanoid(), name: "Lerum BK" },
 ];
 
 export const TeamsSlice = createSlice({
@@ -16,7 +16,7 @@ export const TeamsSlice = createSlice({
     add: (state, action: PayloadAction<ITeam>) => {
       state.push(action.payload);
     },
-    remove: (state, action: PayloadAction<number>) => {
+    remove: (state, action: PayloadAction<string>) => {
       state = state.filter((p) => p.id !== action.payload);
     },
     update: (state, action: PayloadAction<ITeam>) => {
@@ -29,7 +29,5 @@ export const TeamsSlice = createSlice({
 export const { add, remove, update } = TeamsSlice.actions;
 
 export const selectTeams = (state: RootState) => state.teams;
-export const selectNextTeamId = (state: RootState) =>
-  state.teams.map((t) => t.id).reduce((a, b) => Math.max(a, b)) + 1;
 
 export default TeamsSlice.reducer;

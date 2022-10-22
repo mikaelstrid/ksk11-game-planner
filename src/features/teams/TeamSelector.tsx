@@ -9,8 +9,8 @@ function TeamSelector({
   onChange,
 }: {
   id: string;
-  value: number | undefined;
-  onChange: (value: number) => void;
+  value: string | undefined;
+  onChange: (value: string) => void;
 }) {
   const teams = useAppSelector(selectTeams);
   return (
@@ -18,7 +18,7 @@ function TeamSelector({
       id={id}
       type="select"
       value={value}
-      onChange={(e) => onChange(parseInt(e.target.value))}
+      onChange={(e) => onChange(e.target.value)}
     >
       <option value={-1}>- Välj lag -</option>
       {teams.map((team) => (

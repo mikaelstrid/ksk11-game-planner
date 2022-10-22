@@ -6,10 +6,10 @@ import PlayerSelector from "../players/PlayerSelector";
 import { selectPlayers } from "../players/playersSlice";
 import { addPlayerToRooster, removePlayerFromRooster } from "./gamesSlice";
 
-function Rooster({ gameId, rooster }: { gameId: number; rooster: IRooster }) {
+function Rooster({ gameId, rooster }: { gameId: string; rooster: IRooster }) {
   const dispatch = useAppDispatch();
   const players = useAppSelector(selectPlayers);
-  const [playerId, setPlayerId] = useState(-1);
+  const [playerId, setPlayerId] = useState("-1");
 
   return (
     <div>
@@ -67,7 +67,7 @@ function Rooster({ gameId, rooster }: { gameId: number; rooster: IRooster }) {
             dispatch(
               addPlayerToRooster({ gameId, roosterId: rooster.id, playerId })
             );
-            setPlayerId(-1);
+            setPlayerId("-1");
           }}
         >
           Lägg till

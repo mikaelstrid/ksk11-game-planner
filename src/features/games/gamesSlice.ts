@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import { IGame } from "../../models/all.model";
 
@@ -6,19 +6,19 @@ export type GamesState = IGame[];
 
 const initialState: GamesState = [
   {
-    id: 1,
+    id: "1",
     date: new Date().toISOString().substring(0, 10),
-    opponentId: 1,
+    opponentId: "1",
     isHomeGame: true,
     roosters: [
-      { id: 1, players: [1, 2] },
-      { id: 2, players: [2] },
+      { id: "1", players: ["1", "2"] },
+      { id: "2", players: ["2"] },
     ],
   },
   {
-    id: 2,
+    id: "2",
     date: new Date().toISOString().substring(0, 10),
-    opponentId: 2,
+    opponentId: "2",
     isHomeGame: true,
     roosters: [],
   },
@@ -31,19 +31,14 @@ export const gamesSlice = createSlice({
     add: (state, action: PayloadAction<IGame>) => {
       state.push(action.payload);
     },
-    remove: (state, action: PayloadAction<number>) => {
+    remove: (state, action: PayloadAction<string>) => {
       state = state.filter((p) => p.id !== action.payload);
     },
-    addRoosterToGame: (state, action: PayloadAction<number>) => {
+    addRoosterToGame: (state, action: PayloadAction<string>) => {
       const game = state.find((g) => g.id === action.payload);
       if (game) {
         game.roosters.push({
-          id:
-            game.roosters.length === 0
-              ? 1
-              : game?.roosters
-                  .map((r) => r.id)
-                  .reduce((a, b) => Math.max(a, b)) + 1,
+          id: nanoid(),
           players: [],
         });
       }
@@ -51,9 +46,9 @@ export const gamesSlice = createSlice({
     addPlayerToRooster: (
       state,
       action: PayloadAction<{
-        gameId: number;
-        roosterId: number;
-        playerId: number;
+        gameId: string;
+        roosterId: string;
+        playerId: string;
       }>
     ) => {
       const game = state.find((g) => g.id === action.payload.gameId);
@@ -69,9 +64,9 @@ export const gamesSlice = createSlice({
     removePlayerFromRooster: (
       state,
       action: PayloadAction<{
-        gameId: number;
-        roosterId: number;
-        playerId: number;
+        gameId: string;
+        roosterId: string;
+        playerId: string;
       }>
     ) => {
       const game = state.find((g) => g.id === action.payload.gameId);
@@ -98,7 +93,5 @@ export const {
 } = gamesSlice.actions;
 
 export const selectGames = (state: RootState) => state.games;
-export const selectNextGameId = (state: RootState) =>
-  state.games.map((t) => t.id).reduce((a, b) => Math.max(a, b)) + 1;
 
 export default gamesSlice.reducer;

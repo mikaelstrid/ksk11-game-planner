@@ -12,7 +12,7 @@ function Game() {
   const games = useAppSelector(selectGames);
   const teams = useAppSelector(selectTeams);
   let { id } = useParams();
-  const game = games.find((a) => a.id === parseInt(id ?? ""));
+  const game = games.find((a) => a.id === id);
 
   if (!game) return <p>404</p>;
 

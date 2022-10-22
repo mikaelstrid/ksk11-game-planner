@@ -7,9 +7,7 @@ import { update } from "./teamsSlice";
 function EditTeam() {
   let { id } = useParams();
   const dispatch = useAppDispatch();
-  const team = useAppSelector((state) =>
-    state.teams.find((a) => a.id === parseInt(id ?? ""))
-  );
+  const team = useAppSelector((state) => state.teams.find((a) => a.id === id));
 
   const [name, setName] = useState(team?.name ?? "");
 

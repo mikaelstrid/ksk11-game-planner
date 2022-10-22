@@ -1,19 +1,19 @@
+import { nanoid } from "@reduxjs/toolkit";
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { add, selectNextTeamId } from "./teamsSlice";
+import { useAppDispatch } from "../../app/hooks";
+import { add } from "./teamsSlice";
 
 function NewTeam() {
   const dispatch = useAppDispatch();
   const [name, setName] = useState("");
-  const nextTeamId = useAppSelector(selectNextTeamId);
 
   const onNameChanged = (e: React.FormEvent<HTMLInputElement>) =>
     setName(e.currentTarget.value);
 
   const onSaveClicked = () => {
     if (name) {
-      dispatch(add({ id: nextTeamId, name }));
+      dispatch(add({ id: nanoid(), name }));
       setName("");
     }
   };
