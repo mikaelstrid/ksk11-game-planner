@@ -8,7 +8,7 @@ function EditTeam() {
   let { id } = useParams();
   const dispatch = useAppDispatch();
   const team = useAppSelector((state) =>
-    state.teams.teams.find((a) => a.id === parseInt(id ?? ""))
+    state.teams.find((a) => a.id === parseInt(id ?? ""))
   );
 
   const [name, setName] = useState(team?.name ?? "");
