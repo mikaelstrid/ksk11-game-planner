@@ -2,10 +2,9 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Row, Col } from "reactstrap";
 import { useAppSelector } from "../../app/hooks";
-import { selectTeams } from "./teamsSlice";
 
 function Teams() {
-  const teams = useAppSelector(selectTeams);
+  const teams = useAppSelector((state) => state.teams);
 
   return (
     <>

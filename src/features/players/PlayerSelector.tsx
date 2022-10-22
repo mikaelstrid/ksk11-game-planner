@@ -1,7 +1,6 @@
 import React from "react";
 import { Input } from "reactstrap";
 import { useAppSelector } from "../../app/hooks";
-import { selectPlayers } from "./playersSlice";
 
 function PlayerSelector({
   id,
@@ -14,7 +13,7 @@ function PlayerSelector({
   exludePlayerIds?: string[];
   onChange: (value: string) => void;
 }) {
-  const players = useAppSelector(selectPlayers);
+  const players = useAppSelector((state) => state.players);
   return (
     <Input
       id={id}

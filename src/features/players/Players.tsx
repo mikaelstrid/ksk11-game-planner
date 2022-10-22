@@ -1,9 +1,8 @@
 import React from "react";
 import { useAppSelector } from "../../app/hooks";
-import { selectPlayers } from "./playersSlice";
 
 function Players() {
-  const players = useAppSelector(selectPlayers);
+  const players = useAppSelector((state) => state.players);
 
   return (
     <>

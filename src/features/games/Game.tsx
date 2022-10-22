@@ -3,14 +3,13 @@ import { useParams } from "react-router-dom";
 import { Button } from "reactstrap";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import TeamHelper from "../../helpers/team.helper";
-import { selectTeams } from "../teams/teamsSlice";
-import { addRoosterToGame, selectGames } from "./gamesSlice";
+import { addRoosterToGame } from "./gamesSlice";
 import Rooster from "./Rooster";
 
 function Game() {
   const dispatch = useAppDispatch();
-  const games = useAppSelector(selectGames);
-  const teams = useAppSelector(selectTeams);
+  const games = useAppSelector((state) => state.games);
+  const teams = useAppSelector((state) => state.teams);
   let { id } = useParams();
   const game = games.find((a) => a.id === id);
 

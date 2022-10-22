@@ -1,7 +1,6 @@
 import React from "react";
 import { Input } from "reactstrap";
 import { useAppSelector } from "../../app/hooks";
-import { selectTeams } from "./teamsSlice";
 
 function TeamSelector({
   id,
@@ -12,7 +11,8 @@ function TeamSelector({
   value: string | undefined;
   onChange: (value: string) => void;
 }) {
-  const teams = useAppSelector(selectTeams);
+  const teams = useAppSelector((state) => state.teams);
+
   return (
     <Input
       id={id}

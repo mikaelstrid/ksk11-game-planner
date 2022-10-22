@@ -1,5 +1,6 @@
 import { nanoid } from "@reduxjs/toolkit";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import { useAppDispatch } from "../../app/hooks";
 import TeamSelector from "../teams/TeamSelector";
@@ -7,6 +8,7 @@ import { add } from "./gamesSlice";
 
 function NewGame() {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const [opponentId, setOpponentId] = useState("-1");
   const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
@@ -15,17 +17,17 @@ function NewGame() {
   const onSaveClicked = (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (opponentId !== "-1" && date) {
-      dispatch(
-        add({
-          id: nanoid(),
-          date: date,
-          opponentId,
-          isHomeGame,
-          roosters: [],
-        })
-      );
+      const newGame = {
+        id: nanoid(),
+        date: date,
+        opponentId,
+        isHomeGame,
+        roosters: [],
+      };
+      dispatch(add(newGame));
       setOpponentId("-1");
       setIsHomeGame(true);
+      navigate(`/games/${newGame.id}`);
     }
   };
 

@@ -1,12 +1,11 @@
-import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../../app/store";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ITeam } from "../../models/all.model";
 
 export type TeamsState = ITeam[];
 
 const initialState: TeamsState = [
-  { id: nanoid(), name: "Stenungsund Stingers" },
-  { id: nanoid(), name: "Lerum BK" },
+  { id: "1", name: "Stenungsund Stingers" },
+  { id: "2", name: "Lerum BK" },
 ];
 
 export const TeamsSlice = createSlice({
@@ -27,7 +26,5 @@ export const TeamsSlice = createSlice({
 });
 
 export const { add, remove, update } = TeamsSlice.actions;
-
-export const selectTeams = (state: RootState) => state.teams;
 
 export default TeamsSlice.reducer;

@@ -1,11 +1,13 @@
 import { nanoid } from "@reduxjs/toolkit";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import { useAppDispatch } from "../../app/hooks";
 import { add } from "./teamsSlice";
 
 function NewTeam() {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [name, setName] = useState("");
 
   const onNameChanged = (e: React.FormEvent<HTMLInputElement>) =>
@@ -15,6 +17,7 @@ function NewTeam() {
     if (name) {
       dispatch(add({ id: nanoid(), name }));
       setName("");
+      navigate(`/teams`);
     }
   };
 

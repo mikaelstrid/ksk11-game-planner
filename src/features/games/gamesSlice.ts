@@ -1,5 +1,4 @@
 import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../../app/store";
 import { IGame } from "../../models/all.model";
 
 export type GamesState = IGame[];
@@ -91,7 +90,5 @@ export const {
   addPlayerToRooster,
   removePlayerFromRooster,
 } = gamesSlice.actions;
-
-export const selectGames = (state: RootState) => state.games;
 
 export default gamesSlice.reducer;

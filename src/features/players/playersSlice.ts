@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../../app/store";
 import { IPlayer } from "../../models/all.model";
 
 export type PlayersState = IPlayer[];
@@ -49,7 +48,5 @@ export const playersSlice = createSlice({
 });
 
 export const { add, remove } = playersSlice.actions;
-
-export const selectPlayers = (state: RootState) => state.players;
 
 export default playersSlice.reducer;
