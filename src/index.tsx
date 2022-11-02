@@ -13,6 +13,7 @@ import NewGame from "./features/games/NewGame";
 import Teams from "./features/teams/Teams";
 import NewTeam from "./features/teams/NewTeam";
 import EditTeam from "./features/teams/EditTeam";
+import PlayersSummary from "./features/players/PlayersSummary";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,12 @@ const router = createBrowserRouter([
       {
         path: "/players",
         element: <Players />,
+        children: [
+          {
+            path: "",
+            element: <PlayersSummary />,
+          },
+        ],
       },
       {
         path: "/teams",
